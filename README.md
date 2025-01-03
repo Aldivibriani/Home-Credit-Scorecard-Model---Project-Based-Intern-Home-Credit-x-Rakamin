@@ -66,11 +66,17 @@ The primary objective is to develop a robust predictive model that can effective
 
 There are 7 datasets but due to computer's performance, we only use 5 datasets, Application_train, bureau, bureau_balance, previous_application, and instalments_payments. The datasets are so messy and need a detail data cleaning.
 
-**handling Missing Data**: In application_train, there are many features that has missing value. Starting from 0% - 20% missing data to over 60% missing data. Because the feature is too many, we drop features with missing values over 60% because these data can not provide any much information. As for missing values under 60%, we considering to fill it with median for numerical data (because median is robust with outliers) and mode for categorical data. The handling missing data treatment also applied for the rest datasets.
+**handling Missing Data**: In application_train, there are many features that has missing value. Starting from 0% - 20% missing data to over 60% missing data. Because the feature is too many, we drop features with missing values over 60% because these data can not provide any much information. 
+
+As for missing values under 60%, we considering to fill it with median for numerical data (because median is robust with outliers) and mode for categorical data. The handling missing data treatment also applied for the rest datasets.
   
 **Handling Duplicated Data**: There are no duplicated data in every datasets (also, we drop the primary key and no duplicated data found).
 
-**Handling Outliers**: As for outliers, every features should be analyzed carefully because some features have an outliers as anomaly and some of them are not. For example, there is a DAYS_EMPLOYED (How many days before the application the person started current employment) feature in application_train that has maximum value at 365.243 days or 1.000 years. There is no possible that this person had worked for 1.000 years, so we drop this outliers. Then, there is a feature name "OBS_60_CNT_SOCIAL_CIRCLE" (How many observation of client's social surroundings with observable 60 DPD (days past due) default) with median 0 (meaning no observation around client's social surroundings) and the maximum value is 344. We considering to not drop the outliers because there might be individual with approximately 300 people in their social circle who are late on payments for over 60 days.
+**Handling Outliers**: As for outliers, every features should be analyzed carefully because some features have an outliers as anomaly and some of them are not. 
+
+For example, there is a DAYS_EMPLOYED (How many days before the application the person started current employment) feature in application_train that has maximum value at 365.243 days or 1.000 years. There is no possible that this person had worked for 1.000 years, so we drop this outliers. 
+
+Then, there is a feature name "OBS_60_CNT_SOCIAL_CIRCLE" (How many observation of client's social surroundings with observable 60 DPD (days past due) default) with median 0 (meaning no observation around client's social surroundings) and the maximum value is 344. We considering to not drop the outliers because there might be individual with approximately 300 people in their social circle who are late on payments for over 60 days.
 
 As for features that has outliers but not to drop the outliers, we handling it with feature transformation to make the data normal distributed. 
 
